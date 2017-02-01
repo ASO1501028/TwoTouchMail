@@ -36,6 +36,7 @@ public class NoDinnerActivity extends AppCompatActivity
         EditText edit01 = (EditText)findViewById(R.id.editText);
         String title = edit01.getText().toString();
         Resources res = getResources();
+
         Uri uri = Uri.parse("mailto:" + res.getString(R.string.mail_to).toString());
         Intent intent=new Intent(Intent.ACTION_SENDTO, uri);
         intent.putExtra(Intent.EXTRA_SUBJECT, title);

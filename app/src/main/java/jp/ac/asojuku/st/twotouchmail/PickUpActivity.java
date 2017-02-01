@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.Random;
+
 public class PickUpActivity extends AppCompatActivity {
 
     @Override
@@ -31,7 +33,16 @@ public class PickUpActivity extends AppCompatActivity {
                 String title = edit01.getText().toString();
 
                 Resources res = getResources();
-                Uri uri = Uri.parse("mailto:" + res.getString(R.string.mail_to).toString());
+                Random rnd = new Random();
+                Uri uri;
+                int mail = rnd.nextInt(3);
+                if ( mail == 0){
+                    uri = Uri.parse("mailto:" + res.getString(R.string.mail_to).toString());
+                } else if (mail == 1){
+                    uri = Uri.parse("mailto:" + res.getString(R.string.mail_to2).toString());
+                } else {
+                    uri = Uri.parse("mailto:" + res.getString(R.string.mail_to3).toString());
+                }
 
                 Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
                 intent.putExtra(Intent.EXTRA_SUBJECT, title);
